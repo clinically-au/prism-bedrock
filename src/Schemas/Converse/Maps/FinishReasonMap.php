@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prism\Bedrock\Schemas\Converse\Maps;
+namespace Clinically\PrismBedrock\Schemas\Converse\Maps;
 
 use Prism\Prism\Enums\FinishReason;
 

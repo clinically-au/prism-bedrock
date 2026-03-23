@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Anthropic\Maps;
 
-use Prism\Bedrock\Schemas\Anthropic\Maps\ToolMap;
+use Clinically\PrismBedrock\Schemas\Anthropic\Maps\ToolMap;
 use Prism\Prism\Providers\Anthropic\Enums\AnthropicCacheType;
 use Prism\Prism\Tool;
 

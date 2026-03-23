@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Converse\Concerns;
 
-use Prism\Bedrock\Schemas\Converse\Concerns\ExtractsToolCalls;
+use Clinically\PrismBedrock\Schemas\Converse\Concerns\ExtractsToolCalls;
 
 it('extracts tool calls with array input', function (): void {
     $extractor = new class

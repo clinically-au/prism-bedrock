@@ -1,5 +1,5 @@
 providers:
-  - Prism\Bedrock\BedrockServiceProvider
+  - Clinically\PrismBedrock\BedrockServiceProvider
 
 migrations:
   - workbench/database/migrations

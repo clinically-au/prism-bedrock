@@ -1,13 +1,13 @@
 <?php
 
-namespace Prism\Bedrock;
+namespace Clinically\PrismBedrock;
 
 use Aws\Credentials\Credentials;
 use Aws\Signature\SignatureV4;
 use Generator;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Request;
-use Prism\Bedrock\Enums\BedrockSchema;
+use Clinically\PrismBedrock\Enums\BedrockSchema;
 use Prism\Prism\Concerns\InitializesClient;
 use Prism\Prism\Contracts\PrismRequest;
 use Prism\Prism\Embeddings\Request as EmbeddingRequest;

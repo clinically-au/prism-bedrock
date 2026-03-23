@@ -8,13 +8,13 @@ describe('Arch presets', function (): void {
 
 describe('Custom relaxed preset', function (): void {
     arch('No final classes')
-        ->expect('Prism\Bedrock')
+        ->expect('Clinically\PrismBedrock')
         ->classes()
         ->not
         ->toBeFinal();
 
     arch('No private methods')
-        ->expect('Prism\Bedrock')
+        ->expect('Clinically\PrismBedrock')
         ->classes()
         ->not
         ->toHavePrivateMethods();

@@ -1,22 +1,22 @@
 <?php
 
-namespace Prism\Bedrock\Enums;
+namespace Clinically\PrismBedrock\Enums;
 
 use Illuminate\Support\Str;
-use Prism\Bedrock\Contracts\BedrockEmbeddingsHandler;
-use Prism\Bedrock\Contracts\BedrockImagesHandler;
-use Prism\Bedrock\Contracts\BedrockStreamHandler;
-use Prism\Bedrock\Contracts\BedrockStructuredHandler;
-use Prism\Bedrock\Contracts\BedrockTextHandler;
-use Prism\Bedrock\Schemas\Anthropic\AnthropicStreamHandler;
-use Prism\Bedrock\Schemas\Anthropic\AnthropicStructuredHandler;
-use Prism\Bedrock\Schemas\Anthropic\AnthropicTextHandler;
-use Prism\Bedrock\Schemas\Cohere\CohereEmbeddingsHandler;
-use Prism\Bedrock\Schemas\Converse\ConverseStreamHandler;
-use Prism\Bedrock\Schemas\Converse\ConverseStructuredHandler;
-use Prism\Bedrock\Schemas\Converse\ConverseTextHandler;
-use Prism\Bedrock\Schemas\Stability\StabilityImagesHandler;
-use Prism\Bedrock\Schemas\Titan\TitanImagesHandler;
+use Clinically\PrismBedrock\Contracts\BedrockEmbeddingsHandler;
+use Clinically\PrismBedrock\Contracts\BedrockImagesHandler;
+use Clinically\PrismBedrock\Contracts\BedrockStreamHandler;
+use Clinically\PrismBedrock\Contracts\BedrockStructuredHandler;
+use Clinically\PrismBedrock\Contracts\BedrockTextHandler;
+use Clinically\PrismBedrock\Schemas\Anthropic\AnthropicStreamHandler;
+use Clinically\PrismBedrock\Schemas\Anthropic\AnthropicStructuredHandler;
+use Clinically\PrismBedrock\Schemas\Anthropic\AnthropicTextHandler;
+use Clinically\PrismBedrock\Schemas\Cohere\CohereEmbeddingsHandler;
+use Clinically\PrismBedrock\Schemas\Converse\ConverseStreamHandler;
+use Clinically\PrismBedrock\Schemas\Converse\ConverseStructuredHandler;
+use Clinically\PrismBedrock\Schemas\Converse\ConverseTextHandler;
+use Clinically\PrismBedrock\Schemas\Stability\StabilityImagesHandler;
+use Clinically\PrismBedrock\Schemas\Titan\TitanImagesHandler;
 
 enum BedrockSchema: string
 {

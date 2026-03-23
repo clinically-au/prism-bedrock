@@ -1,16 +1,16 @@
 <?php
 
-namespace Prism\Bedrock\Schemas\Anthropic;
+namespace Clinically\PrismBedrock\Schemas\Anthropic;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
-use Prism\Bedrock\Contracts\BedrockStructuredHandler;
-use Prism\Bedrock\Schemas\Anthropic\Concerns\ExtractsText;
-use Prism\Bedrock\Schemas\Anthropic\Concerns\ExtractsToolCalls;
-use Prism\Bedrock\Schemas\Anthropic\Maps\FinishReasonMap;
-use Prism\Bedrock\Schemas\Anthropic\Maps\MessageMap;
-use Prism\Bedrock\Schemas\Anthropic\Maps\ToolChoiceMap;
-use Prism\Bedrock\Schemas\Anthropic\Maps\ToolMap;
+use Clinically\PrismBedrock\Contracts\BedrockStructuredHandler;
+use Clinically\PrismBedrock\Schemas\Anthropic\Concerns\ExtractsText;
+use Clinically\PrismBedrock\Schemas\Anthropic\Concerns\ExtractsToolCalls;
+use Clinically\PrismBedrock\Schemas\Anthropic\Maps\FinishReasonMap;
+use Clinically\PrismBedrock\Schemas\Anthropic\Maps\MessageMap;
+use Clinically\PrismBedrock\Schemas\Anthropic\Maps\ToolChoiceMap;
+use Clinically\PrismBedrock\Schemas\Anthropic\Maps\ToolMap;
 use Prism\Prism\Concerns\CallsTools;
 use Prism\Prism\Enums\FinishReason;
 use Prism\Prism\Exceptions\PrismException;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Prism\Bedrock\Schemas\Converse\Maps;
+namespace Clinically\PrismBedrock\Schemas\Converse\Maps;
 
-use Prism\Bedrock\Enums\Mimes;
+use Clinically\PrismBedrock\Enums\Mimes;
 use Prism\Prism\Contracts\ProviderMediaMapper;
 use Prism\Prism\Enums\Provider;
 use Prism\Prism\ValueObjects\Media\Image;

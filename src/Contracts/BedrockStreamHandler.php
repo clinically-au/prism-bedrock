@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Prism\Bedrock\Contracts;
+namespace Clinically\PrismBedrock\Contracts;
 
 use Generator;
 use Illuminate\Http\Client\PendingRequest;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 use Prism\Prism\Streaming\Events\StreamEvent;
 use Prism\Prism\Text\Request;
 

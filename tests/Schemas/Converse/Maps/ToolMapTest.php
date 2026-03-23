@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Converse\Maps;
 
-use Prism\Bedrock\Schemas\Converse\Maps\ToolMap;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\ToolMap;
 use Prism\Prism\Tool;
 
 it('maps tools', function (): void {

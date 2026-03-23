@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Prism\Bedrock\Rectors\ReorderMethodsRector;
+use Clinically\PrismBedrock\Rectors\ReorderMethodsRector;
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;

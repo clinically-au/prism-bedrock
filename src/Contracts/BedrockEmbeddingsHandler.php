@@ -1,9 +1,9 @@
 <?php
 
-namespace Prism\Bedrock\Contracts;
+namespace Clinically\PrismBedrock\Contracts;
 
 use Illuminate\Http\Client\PendingRequest;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 use Prism\Prism\Embeddings\Request;
 use Prism\Prism\Embeddings\Response;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Prism\Bedrock;
+namespace Clinically\PrismBedrock;
 
 use Aws\Credentials\CredentialProvider;
 use Aws\Credentials\Credentials;

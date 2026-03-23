@@ -1,6 +1,6 @@
 <?php
 
-namespace Prism\Bedrock\Schemas\Anthropic\Concerns;
+namespace Clinically\PrismBedrock\Schemas\Anthropic\Concerns;
 
 use Prism\Prism\ValueObjects\ToolCall;
 

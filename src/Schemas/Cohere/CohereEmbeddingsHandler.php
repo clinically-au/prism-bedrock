@@ -1,10 +1,10 @@
 <?php
 
-namespace Prism\Bedrock\Schemas\Cohere;
+namespace Clinically\PrismBedrock\Schemas\Cohere;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
-use Prism\Bedrock\Contracts\BedrockEmbeddingsHandler;
+use Clinically\PrismBedrock\Contracts\BedrockEmbeddingsHandler;
 use Prism\Prism\Embeddings\Request;
 use Prism\Prism\Embeddings\Response as EmbeddingsResponse;
 use Prism\Prism\Exceptions\PrismException;

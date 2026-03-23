@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Anthropic\Maps;
 
-use Prism\Bedrock\Schemas\Anthropic\Maps\MessageMap;
+use Clinically\PrismBedrock\Schemas\Anthropic\Maps\MessageMap;
 use Prism\Prism\Exceptions\PrismException;
 use Prism\Prism\Providers\Anthropic\Enums\AnthropicCacheType;
 use Prism\Prism\ValueObjects\Media\Image;

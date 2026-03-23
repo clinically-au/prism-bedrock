@@ -1,6 +1,6 @@
 <?php
 
-namespace Prism\Bedrock\Enums;
+namespace Clinically\PrismBedrock\Enums;
 
 use Illuminate\Support\Str;
 

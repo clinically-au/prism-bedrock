@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Prism\Bedrock\Schemas\Titan;
+namespace Clinically\PrismBedrock\Schemas\Titan;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
-use Prism\Bedrock\Contracts\BedrockImagesHandler;
+use Clinically\PrismBedrock\Contracts\BedrockImagesHandler;
 use Prism\Prism\Exceptions\PrismException;
 use Prism\Prism\Images\Request;
 use Prism\Prism\Images\Response as ImagesResponse;

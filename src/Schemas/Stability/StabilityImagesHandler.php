@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Prism\Bedrock\Schemas\Stability;
+namespace Clinically\PrismBedrock\Schemas\Stability;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Prism\Bedrock\Contracts\BedrockImagesHandler;
+use Clinically\PrismBedrock\Contracts\BedrockImagesHandler;
 use Prism\Prism\Exceptions\PrismException;
 use Prism\Prism\Images\Request;
 use Prism\Prism\Images\Response as ImagesResponse;

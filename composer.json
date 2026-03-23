@@ -1,14 +1,18 @@
 {
-  "name": "prism-php/bedrock",
-  "description": "A provider for Prism adding support for AWS Bedrock.",
+  "name": "clinically/prism-bedrock",
+  "description": "A Prism provider for AWS Bedrock. Fork of prism-php/bedrock.",
   "type": "library",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Prism\\Bedrock\\": "src/"
+      "Clinically\\PrismBedrock\\": "src/"
     }
   },
   "authors": [
+    {
+      "name": "Wojt Janowski",
+      "email": "wojt@clinically.com.au"
+    },
     {
       "name": "TJ Miller",
       "email": "hello@echolabs.dev"
@@ -93,7 +97,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Prism\\Bedrock\\BedrockServiceProvider"
+        "Clinically\\PrismBedrock\\BedrockServiceProvider"
       ]
     }
   }

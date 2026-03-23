@@ -1,25 +1,13 @@
-![](assets/bedrock-banner.webp)
-
-<p align="center">
-    <a href="https://packagist.org/packages/prism-php/bedrock">
-        <img src="https://poser.pugx.org/prism-php/bedrock/d/total.svg" alt="Total Downloads">
-    </a>
-    <a href="https://packagist.org/packages/prism-php/bedrock">
-        <img src="https://poser.pugx.org/prism-php/bedrock/v/stable.svg" alt="Latest Stable Version">
-    </a>
-    <a href="https://packagist.org/packages/prism-php/bedrock">
-        <img src="https://poser.pugx.org/prism-php/bedrock/license.svg" alt="License">
-    </a>
-</p>
-
 # Prism Bedrock
 
-Unlock the power of AWS Bedrock services in your Laravel applications with Prism Bedrock. This package provides a standalone Bedrock provider for the Prism PHP framework.
+A [Prism](https://github.com/prism-php/prism) provider for AWS Bedrock in Laravel applications.
+
+This is a maintained fork of [prism-php/bedrock](https://github.com/prism-php/bedrock) with additional features including streaming support, image generation, thinking/reasoning content, and cache token tracking.
 
 ## Installation
 
 ```bash
-composer require prism-php/bedrock
+composer require clinically/prism-bedrock
 ```
 
 ## Configuration
@@ -46,7 +34,7 @@ Add the following to your Prism configuration (`config/prism.php`):
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 
 $response = Prism::text()
     ->using(Bedrock::KEY, 'anthropic.claude-3-sonnet-20240229-v1:0')
@@ -60,7 +48,7 @@ echo $response->text;
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 use Prism\Prism\Schema\ObjectSchema;
 use Prism\Prism\Schema\StringSchema;
 use Prism\Prism\Schema\ArraySchema;
@@ -98,7 +86,7 @@ $data = $response->structured;
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 
 $response = Prism::embeddings()
     ->using(Bedrock::KEY, 'cohere.embed-english-v3')
@@ -116,7 +104,7 @@ $embeddings = $response->embeddings;
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 
 $response = Prism::text()
     ->using(Bedrock::KEY, urlencode('arn:aws:bedrock:us-east-1:999999999999:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0'))
@@ -156,8 +144,8 @@ If you wish to force Prism Bedrock to use Converse instead of a vendor specific 
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
-use Prism\Bedrock\Enums\BedrockSchema;
+use Clinically\PrismBedrock\Bedrock;
+use Clinically\PrismBedrock\Enums\BedrockSchema;
 
 $response = Prism::text()
     ->using(Bedrock::KEY, 'anthropic.claude-3-sonnet-20240229-v1:0')
@@ -173,7 +161,7 @@ For [supported models](https://docs.aws.amazon.com/bedrock/latest/userguide/prom
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 use Prism\Prism\ValueObjects\Messages\UserMessage;
 
 $response = Prism::text()
@@ -199,7 +187,7 @@ The performance of that prompt may vary by model. You can override it using `wit
 
 ```php
 use Prism\Prism\Prism;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 use Prism\Prism\ValueObjects\Messages\UserMessage;
 
 Prism::structured()
@@ -217,6 +205,6 @@ Prism::structured()
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
-## Authors
+## Credits
 
-This library is created by [TJ Miller](https://tjmiller.me) with contributions from the [Open Source Community](https://github.com/echolabsdev/prism-bedrock/graphs/contributors).
+Originally created by [TJ Miller](https://tjmiller.me) and [Chris Bridges](https://github.com/chris-bridges) at [prism-php/bedrock](https://github.com/prism-php/bedrock). This fork is maintained by [Clinically](https://github.com/clinically-au).

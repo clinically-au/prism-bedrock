@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Converse\Maps;
 
-use Prism\Bedrock\Schemas\Converse\Maps\MessageMap;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\MessageMap;
 use Prism\Prism\ValueObjects\Media\Document;
 use Prism\Prism\ValueObjects\Media\Image;
 use Prism\Prism\ValueObjects\Messages\AssistantMessage;

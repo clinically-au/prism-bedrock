@@ -6,7 +6,7 @@ namespace Tests\Schemas\Stability;
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
-use Prism\Bedrock\Bedrock;
+use Clinically\PrismBedrock\Bedrock;
 use Prism\Prism\Facades\Prism;
 use Tests\Fixtures\FixtureResponse;
 

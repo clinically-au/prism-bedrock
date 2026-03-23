@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Converse\Maps;
 
-use Prism\Bedrock\Schemas\Converse\Maps\ToolChoiceMap;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\ToolChoiceMap;
 use Prism\Prism\Enums\ToolChoice;
 
 it('maps a specific tool correctly', function (): void {

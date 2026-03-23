@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Prism\Bedrock\Schemas\Converse;
+namespace Clinically\PrismBedrock\Schemas\Converse;
 
 use Generator;
 use Illuminate\Http\Client\Response;
-use Prism\Bedrock\Concerns\ParsesEventStream;
-use Prism\Bedrock\Contracts\BedrockStreamHandler;
-use Prism\Bedrock\Schemas\Converse\Maps\FinishReasonMap;
+use Clinically\PrismBedrock\Concerns\ParsesEventStream;
+use Clinically\PrismBedrock\Contracts\BedrockStreamHandler;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\FinishReasonMap;
 use Prism\Prism\Concerns\CallsTools;
 use Prism\Prism\Enums\FinishReason;
 use Prism\Prism\Exceptions\PrismException;

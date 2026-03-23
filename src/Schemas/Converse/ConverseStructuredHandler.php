@@ -1,17 +1,17 @@
 <?php
 
-namespace Prism\Bedrock\Schemas\Converse;
+namespace Clinically\PrismBedrock\Schemas\Converse;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
-use Prism\Bedrock\Contracts\BedrockStructuredHandler;
-use Prism\Bedrock\Schemas\Converse\Concerns\ExtractsText;
-use Prism\Bedrock\Schemas\Converse\Concerns\ExtractsThinking;
-use Prism\Bedrock\Schemas\Converse\Concerns\ExtractsToolCalls;
-use Prism\Bedrock\Schemas\Converse\Maps\FinishReasonMap;
-use Prism\Bedrock\Schemas\Converse\Maps\MessageMap;
-use Prism\Bedrock\Schemas\Converse\Maps\ToolChoiceMap;
-use Prism\Bedrock\Schemas\Converse\Maps\ToolMap;
+use Clinically\PrismBedrock\Contracts\BedrockStructuredHandler;
+use Clinically\PrismBedrock\Schemas\Converse\Concerns\ExtractsText;
+use Clinically\PrismBedrock\Schemas\Converse\Concerns\ExtractsThinking;
+use Clinically\PrismBedrock\Schemas\Converse\Concerns\ExtractsToolCalls;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\FinishReasonMap;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\MessageMap;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\ToolChoiceMap;
+use Clinically\PrismBedrock\Schemas\Converse\Maps\ToolMap;
 use Prism\Prism\Concerns\CallsTools;
 use Prism\Prism\Enums\FinishReason;
 use Prism\Prism\Exceptions\PrismException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Prism\Bedrock\Rectors;
+namespace Clinically\PrismBedrock\Rectors;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;

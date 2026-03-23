@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prism\Bedrock\Schemas\Anthropic\Maps;
+namespace Clinically\PrismBedrock\Schemas\Anthropic\Maps;
 
 use BackedEnum;
 use Prism\Prism\Contracts\Message;
