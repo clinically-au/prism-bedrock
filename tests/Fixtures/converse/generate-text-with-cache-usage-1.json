@@ -1,0 +1,1 @@
+{"metrics":{"latencyMs":397},"output":{"message":{"content":[{"text":"Hello! I'm an AI assistant. How can I help you today?"}],"role":"assistant"}},"stopReason":"end_turn","usage":{"inputTokens":63,"outputTokens":44,"totalTokens":107,"cacheReadInputTokenCount":50,"cacheWriteInputTokenCount":13}}

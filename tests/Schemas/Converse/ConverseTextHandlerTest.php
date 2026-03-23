@@ -45,7 +45,9 @@ it('can generate text with reasoning content', function (): void {
         ->toBe(21)
         ->and($response->usage->completionTokens)->toBe(765)
         ->and($response->text)->toContain('In the mist‑shrouded kingdom of Eldoria')
-        ->and($response->text)->toContain('Sir Alden\'s legend endured');
+        ->and($response->text)->toContain('Sir Alden\'s legend endured')
+        ->and($response->additionalContent)->toHaveKey('thinking')
+        ->and($response->additionalContent['thinking'])->toContain('We need to respond');
 });
 
 it('can generate text with a system prompt', function (): void {
@@ -238,6 +240,21 @@ it('handles a specific tool choice', function (): void {
         ->asText();
 
     expect($response->text)->toContain('75°F and sunny');
+});
+
+it('can calculate cache usage correctly', function (): void {
+    FixtureResponse::fakeResponseSequence('converse', 'converse/generate-text-with-cache-usage');
+
+    $response = Prism::text()
+        ->using('bedrock', 'amazon.nova-micro-v1:0')
+        ->withProviderOptions(['enableCaching' => true])
+        ->withPrompt('Who are you?')
+        ->asText();
+
+    expect($response->usage->promptTokens)->toBe(63);
+    expect($response->usage->completionTokens)->toBe(44);
+    expect($response->usage->cacheWriteInputTokens)->toBe(13);
+    expect($response->usage->cacheReadInputTokens)->toBe(50);
 });
 
 it('does not enable prompt caching if the enableCaching provider meta is not set on the request', function (): void {

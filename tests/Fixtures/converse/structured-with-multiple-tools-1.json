@@ -1,0 +1,1 @@
+{"metrics":{"latencyMs":450},"output":{"message":{"content":[{"text":"Let me search for the game information."},{"toolUse":{"input":{"query":"Detroit Tigers baseball game today"},"name":"search","toolUseId":"tooluse_abc123"}}],"role":"assistant"}},"stopReason":"tool_use","usage":{"inputTokens":500,"outputTokens":65,"totalTokens":565}}

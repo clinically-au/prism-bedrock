@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Prism\Bedrock\Schemas\Anthropic\Maps;
 
+use BackedEnum;
 use Prism\Prism\Tool as PrismTool;
-use UnitEnum;
 
 class ToolMap
 {
@@ -27,7 +27,7 @@ class ToolMap
                     'required' => $tool->requiredParameters(),
                 ],
                 'cache_control' => $cacheType
-                    ? ['type' => $cacheType instanceof UnitEnum ? $cacheType->name : $cacheType]
+                    ? ['type' => $cacheType instanceof BackedEnum ? $cacheType->value : $cacheType]
                     : null,
             ]);
         }, $tools);

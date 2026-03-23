@@ -1,0 +1,1 @@
+{"metrics":{"latencyMs":380},"output":{"message":{"content":[{"text":"Now let me check the weather."},{"toolUse":{"input":{"city":"Detroit"},"name":"weather","toolUseId":"tooluse_def456"}}],"role":"assistant"}},"stopReason":"tool_use","usage":{"inputTokens":600,"outputTokens":55,"totalTokens":655}}

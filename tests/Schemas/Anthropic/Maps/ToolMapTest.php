@@ -73,5 +73,5 @@ it('sets the cache typeif cacheType providerOptions is set on tool', function (m
     ]]);
 })->with([
     'ephemeral',
-    AnthropicCacheType::Ephemeral->value,
+    AnthropicCacheType::Ephemeral,
 ]);
