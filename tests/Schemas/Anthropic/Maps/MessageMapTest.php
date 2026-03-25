@@ -261,3 +261,64 @@ it('sets the cache type on a SystemMessage if cacheType providerOptions is set o
     'ephemeral',
     AnthropicCacheType::Ephemeral,
 ]);
+
+it('merges consecutive user messages (tool result followed by user message)', function (): void {
+    expect(MessageMap::map([
+        new UserMessage('Hello'),
+        new AssistantMessage('Let me look that up', [
+            new ToolCall('tool_1', 'search', ['query' => 'test']),
+        ]),
+        new ToolResultMessage([
+            new ToolResult('tool_1', 'search', ['query' => 'test'], 'result here'),
+        ]),
+        new UserMessage('Thanks, now do something else'),
+    ]))->toBe([
+        [
+            'role' => 'user',
+            'content' => [
+                ['type' => 'text', 'text' => 'Hello'],
+            ],
+        ],
+        [
+            'role' => 'assistant',
+            'content' => [
+                ['type' => 'text', 'text' => 'Let me look that up'],
+                ['type' => 'tool_use', 'id' => 'tool_1', 'name' => 'search', 'input' => ['query' => 'test']],
+            ],
+        ],
+        [
+            'role' => 'user',
+            'content' => [
+                ['type' => 'tool_result', 'tool_use_id' => 'tool_1', 'content' => 'result here'],
+                ['type' => 'text', 'text' => 'Thanks, now do something else'],
+            ],
+        ],
+    ]);
+});
+
+it('does not merge messages when roles alternate correctly', function (): void {
+    expect(MessageMap::map([
+        new UserMessage('Hello'),
+        new AssistantMessage('Hi there'),
+        new UserMessage('How are you?'),
+    ]))->toBe([
+        [
+            'role' => 'user',
+            'content' => [
+                ['type' => 'text', 'text' => 'Hello'],
+            ],
+        ],
+        [
+            'role' => 'assistant',
+            'content' => [
+                ['type' => 'text', 'text' => 'Hi there'],
+            ],
+        ],
+        [
+            'role' => 'user',
+            'content' => [
+                ['type' => 'text', 'text' => 'How are you?'],
+            ],
+        ],
+    ]);
+});

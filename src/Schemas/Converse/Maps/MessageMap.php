@@ -27,10 +27,56 @@ class MessageMap
             throw new PrismException('Bedrock Converse API does not support SystemMessages in the messages array. Use withSystemPrompt or withSystemPrompts instead.');
         }
 
-        return array_map(
+        $mapped = array_map(
             self::mapMessage(...),
             $messages
         );
+
+        return self::mergeConsecutiveSameRoleMessages($mapped);
+    }
+
+    /**
+     * Merge consecutive messages with the same role by concatenating their content arrays.
+     *
+     * The Bedrock Converse API requires strict role alternation (user, assistant, user, ...).
+     * When conversation history is replayed, a ToolResultMessage (role: user) may be followed
+     * by a UserMessage (role: user), producing two consecutive user-role messages. This method
+     * merges them into a single message with combined content blocks.
+     *
+     * @param  array<int, array<string, mixed>>  $messages
+     * @return array<int, array<string, mixed>>
+     */
+    protected static function mergeConsecutiveSameRoleMessages(array $messages): array
+    {
+        if (count($messages) <= 1) {
+            return $messages;
+        }
+
+        $merged = [];
+        $current = null;
+
+        foreach ($messages as $message) {
+            if ($current === null) {
+                $current = $message;
+
+                continue;
+            }
+
+            if ($current['role'] === $message['role']) {
+                $current['content'] = array_merge($current['content'], $message['content']);
+
+                continue;
+            }
+
+            $merged[] = $current;
+            $current = $message;
+        }
+
+        if ($current !== null) {
+            $merged[] = $current;
+        }
+
+        return $merged;
     }
 
     /**

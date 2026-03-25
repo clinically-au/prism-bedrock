@@ -231,3 +231,78 @@ it('maps system messages with a cache breakpoint correctly', function (): void {
         ],
     ]);
 });
+
+it('merges consecutive user messages (tool result followed by user message)', function (): void {
+    expect(MessageMap::map([
+        new UserMessage('Hello'),
+        new AssistantMessage('Let me look that up', [
+            new ToolCall('tool_1', 'search', ['query' => 'test']),
+        ]),
+        new ToolResultMessage([
+            new ToolResult('tool_1', 'search', ['query' => 'test'], 'result here'),
+        ]),
+        new UserMessage('Thanks, now do something else'),
+    ]))->toBe([
+        [
+            'role' => 'user',
+            'content' => [
+                ['text' => 'Hello'],
+            ],
+        ],
+        [
+            'role' => 'assistant',
+            'content' => [
+                ['text' => 'Let me look that up'],
+                [
+                    'toolUse' => [
+                        'toolUseId' => 'tool_1',
+                        'name' => 'search',
+                        'input' => ['query' => 'test'],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'role' => 'user',
+            'content' => [
+                [
+                    'toolResult' => [
+                        'status' => 'success',
+                        'toolUseId' => 'tool_1',
+                        'content' => [
+                            ['text' => 'result here'],
+                        ],
+                    ],
+                ],
+                ['text' => 'Thanks, now do something else'],
+            ],
+        ],
+    ]);
+});
+
+it('does not merge messages when roles alternate correctly', function (): void {
+    expect(MessageMap::map([
+        new UserMessage('Hello'),
+        new AssistantMessage('Hi there'),
+        new UserMessage('How are you?'),
+    ]))->toBe([
+        [
+            'role' => 'user',
+            'content' => [
+                ['text' => 'Hello'],
+            ],
+        ],
+        [
+            'role' => 'assistant',
+            'content' => [
+                ['text' => 'Hi there'],
+            ],
+        ],
+        [
+            'role' => 'user',
+            'content' => [
+                ['text' => 'How are you?'],
+            ],
+        ],
+    ]);
+});
