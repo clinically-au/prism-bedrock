@@ -4,10 +4,10 @@ namespace Clinically\PrismBedrock;
 
 use Aws\Credentials\Credentials;
 use Aws\Signature\SignatureV4;
+use Clinically\PrismBedrock\Enums\BedrockSchema;
 use Generator;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Request;
-use Clinically\PrismBedrock\Enums\BedrockSchema;
 use Prism\Prism\Concerns\InitializesClient;
 use Prism\Prism\Contracts\PrismRequest;
 use Prism\Prism\Embeddings\Request as EmbeddingRequest;
@@ -21,6 +21,7 @@ use Prism\Prism\Structured\Request as StructuredRequest;
 use Prism\Prism\Structured\Response as StructuredResponse;
 use Prism\Prism\Text\Request as TextRequest;
 use Prism\Prism\Text\Response as TextResponse;
+use Prism\Prism\ValueObjects\Messages\UserMessage;
 
 class Bedrock extends Provider
 {
@@ -146,11 +147,23 @@ class Bedrock extends Provider
 
     public function schema(PrismRequest $request): BedrockSchema
     {
-        $override = $request->providerOptions();
+        $override = data_get($request->providerOptions(), 'apiSchema');
 
-        $override = data_get($override, 'apiSchema');
+        if ($override instanceof BedrockSchema) {
+            return $override;
+        }
 
-        return $override ?? BedrockSchema::fromModelString($request->model());
+        if (is_string($override) && BedrockSchema::tryFrom($override) instanceof BedrockSchema) {
+            return BedrockSchema::from($override);
+        }
+
+        $schema = BedrockSchema::fromModelString($request->model());
+
+        if ($schema === BedrockSchema::Anthropic && $this->requestIncludesDocuments($request)) {
+            return BedrockSchema::Converse;
+        }
+
+        return $schema;
     }
 
     public function apiVersion(PrismRequest $request): ?string
@@ -176,7 +189,7 @@ class Bedrock extends Provider
             ->contentType('application/json')
             ->withOptions($options)
             ->retry(...$retry)
-            ->baseUrl("https://bedrock-runtime.{$this->region}.amazonaws.com/model/$model/")
+            ->baseUrl("https://bedrock-runtime.{$this->region}.amazonaws.com/model/".rawurlencode($model).'/')
             ->beforeSending(function (Request $request) {
                 $request = $request->toPsrRequest();
 
@@ -185,5 +198,24 @@ class Bedrock extends Provider
                 return $signature->signRequest($request, $this->credentials);
             })
             ->throw();
+    }
+
+    protected function requestIncludesDocuments(PrismRequest $request): bool
+    {
+        if (! $request instanceof TextRequest && ! $request instanceof StructuredRequest) {
+            return false;
+        }
+
+        foreach ($request->messages() as $message) {
+            if (! $message instanceof UserMessage) {
+                continue;
+            }
+
+            if ($message->documents() !== []) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

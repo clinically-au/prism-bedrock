@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Tests\Schemas\Converse;
 
+use Clinically\PrismBedrock\Enums\BedrockSchema;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
-use Clinically\PrismBedrock\Enums\BedrockSchema;
 use Prism\Prism\Facades\Prism;
+use Prism\Prism\Facades\Tool;
 use Prism\Prism\Schema\BooleanSchema;
 use Prism\Prism\Schema\ObjectSchema;
 use Prism\Prism\Schema\StringSchema;
 use Prism\Prism\Structured\ResponseBuilder;
 use Prism\Prism\Testing\StructuredStepFake;
-use Prism\Prism\Facades\Tool;
 use Tests\Fixtures\FixtureResponse;
 
 it('returns structured output', function (): void {
@@ -128,9 +128,12 @@ it('uses custom jsonModeMessage when provided via providerOptions', function ():
     Http::assertSent(function (Request $request) use ($customMessage): bool {
         $messages = $request->data()['messages'] ?? [];
         $lastMessage = end($messages);
+        $content = collect($lastMessage['content'] ?? [])
+            ->pluck('text')
+            ->filter()
+            ->implode("\n");
 
-        return isset($lastMessage['content'][0]['text']) &&
-               str_contains((string) $lastMessage['content'][0]['text'], $customMessage);
+        return str_contains($content, $customMessage);
     });
 });
 
@@ -163,9 +166,12 @@ it('uses default jsonModeMessage when no custom message is provided', function (
     Http::assertSent(function (Request $request) use ($defaultMessage): bool {
         $messages = $request->data()['messages'] ?? [];
         $lastMessage = end($messages);
+        $content = collect($lastMessage['content'] ?? [])
+            ->pluck('text')
+            ->filter()
+            ->implode("\n");
 
-        return isset($lastMessage['content'][0]['text']) &&
-               str_contains((string) $lastMessage['content'][0]['text'], $defaultMessage);
+        return str_contains($content, $defaultMessage);
     });
 });
 
