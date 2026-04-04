@@ -2,16 +2,27 @@
 
 namespace Tests;
 
+use Clinically\PrismBedrock\BedrockServiceProvider;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Foundation\Application;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Prism\Prism\PrismServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
     use WithWorkbench;
 
+    protected function getPackageProviders($app): array
+    {
+        return [
+            PrismServiceProvider::class,
+            BedrockServiceProvider::class,
+        ];
+    }
+
     /**
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      * @return void
      */
     #[\Override]

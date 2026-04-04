@@ -2,7 +2,6 @@
 
 namespace Clinically\PrismBedrock\Enums;
 
-use Illuminate\Support\Str;
 use Clinically\PrismBedrock\Contracts\BedrockEmbeddingsHandler;
 use Clinically\PrismBedrock\Contracts\BedrockImagesHandler;
 use Clinically\PrismBedrock\Contracts\BedrockStreamHandler;
@@ -16,7 +15,9 @@ use Clinically\PrismBedrock\Schemas\Converse\ConverseStreamHandler;
 use Clinically\PrismBedrock\Schemas\Converse\ConverseStructuredHandler;
 use Clinically\PrismBedrock\Schemas\Converse\ConverseTextHandler;
 use Clinically\PrismBedrock\Schemas\Stability\StabilityImagesHandler;
+use Clinically\PrismBedrock\Schemas\Titan\TitanEmbeddingsHandler;
 use Clinically\PrismBedrock\Schemas\Titan\TitanImagesHandler;
+use Illuminate\Support\Str;
 
 enum BedrockSchema: string
 {
@@ -69,6 +70,7 @@ enum BedrockSchema: string
     {
         return match ($this) {
             self::Cohere => CohereEmbeddingsHandler::class,
+            self::Titan => TitanEmbeddingsHandler::class,
             default => null
         };
     }
@@ -95,22 +97,43 @@ enum BedrockSchema: string
 
     public static function fromModelString(string $string): self
     {
-        if (Str::contains($string, 'anthropic.')) {
+        if (self::isAnthropicModel($string)) {
             return self::Anthropic;
         }
 
-        if (Str::contains($string, 'cohere.')) {
+        if (self::isCohereModel($string)) {
             return self::Cohere;
         }
 
-        if (Str::contains($string, 'stability.')) {
+        if (self::isStabilityModel($string)) {
             return self::Stability;
         }
 
-        if (Str::contains($string, 'amazon.titan-image')) {
+        if (self::isTitanModel($string)) {
             return self::Titan;
         }
 
         return self::Converse;
+    }
+
+    public static function isAnthropicModel(string $string): bool
+    {
+        return Str::contains($string, 'anthropic.');
+    }
+
+    public static function isCohereModel(string $string): bool
+    {
+        return Str::contains($string, 'cohere.');
+    }
+
+    public static function isStabilityModel(string $string): bool
+    {
+        return Str::contains($string, 'stability.');
+    }
+
+    public static function isTitanModel(string $string): bool
+    {
+        return Str::contains($string, 'amazon.titan-image')
+            || Str::contains($string, 'amazon.titan-embed');
     }
 }
