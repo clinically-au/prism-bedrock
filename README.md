@@ -1,8 +1,17 @@
-# Prism Bedrock
+# Prism Bedrock — DEPRECATED
+
+> **This fork is no longer maintained.** This repository is archived.
+>
+> It was created to add streaming, image generation, and other fixes to [`prism-php/bedrock`](https://github.com/prism-php/bedrock) so that our [`clinically/laravel-ai-bedrock`](https://github.com/clinically-au/laravel-ai-bedrock) bridge could expose them through the Laravel AI SDK. Both packages are now obsolete because [`laravel/ai`](https://github.com/laravel/ai) ships native AWS Bedrock support (since v0.6.3, April 2026) — built directly on the AWS SDK, with streaming, tool calling, embeddings, and image generation included.
+>
+> - If you use `laravel/ai`, switch to its built-in `bedrock` provider.
+> - If you use Prism directly, use upstream [`prism-php/bedrock`](https://github.com/prism-php/bedrock) instead. Any unmerged fixes here have been submitted upstream.
+
+---
 
 A [Prism](https://github.com/prism-php/prism) provider for AWS Bedrock in Laravel applications.
 
-This is a maintained fork of [prism-php/bedrock](https://github.com/prism-php/bedrock) with additional features including streaming support, image generation, thinking/reasoning content, and cache token tracking.
+This was a maintained fork of [prism-php/bedrock](https://github.com/prism-php/bedrock) with additional features including streaming support, image generation, thinking/reasoning content, and cache token tracking.
 
 ## Installation
 
